@@ -18,11 +18,11 @@ import org.jsoup.select.Elements;
 
 import model.RentObject;
 
-@Path("/function")
+@Path("function")
 public class RestAPI {
 	
 	@GET
-	@Path("/search")
+	@Path("search")
     @Produces("application/json; charset=UTF-8")
     public String search() throws IOException  {
 		Document doc = Jsoup.connect("https://rent.591.com.tw/?kind=0&region=15").timeout(30000).userAgent("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36").validateTLSCertificates(false).get();
