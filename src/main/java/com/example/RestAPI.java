@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,8 +25,8 @@ public class RestAPI {
 	@GET
 	@Path("search")
     @Produces("application/json; charset=UTF-8")
-    public String search() throws IOException  {
-		Document doc = Jsoup.connect("https://rent.591.com.tw/?kind=0&region=15").timeout(30000).userAgent("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36").validateTLSCertificates(false).get();
+    public String search(@QueryParam("kind") int kind, @QueryParam("region") int region, @QueryParam("firstRow")int firstRow) throws IOException  {
+		Document doc = Jsoup.connect(String.format("https://rent.591.com.tw/?kind=%d&region=%d&firstRow=%d", kind, region, firstRow)).timeout(30000).userAgent("Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36").validateTLSCertificates(false).get();
 		Elements  objects = doc.select(".listInfo").select(".clearfix");
 
 		String out = "";
