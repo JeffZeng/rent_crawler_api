@@ -31,7 +31,7 @@ public class RestAPI {
 		String out = "";
 		ArrayList<RentObject> temp = new ArrayList<RentObject>();
 		for(Element object: objects) {
-			String picture = object.select(".pull-left").select(".imageBox").select("img").first().attr("original");
+			String picture = object.select(".pull-left").select(".imageBox").select("img").first().attr("data-original");
 			String title = object.select(".pull-left").select(".infoContent").select("a").first().text();
 			String type =  object.select(".pull-left").select(".infoContent").select(".lightBox").get(0).text();
 			String address = object.select(".pull-left").select(".infoContent").select("em").get(0).text();
